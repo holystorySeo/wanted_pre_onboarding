@@ -40,7 +40,7 @@ export function Slider() {
 
       if (newLeft === 0) newLeft = 3.89;
       coralBar.current.style.width = newLeft + "px";
-      let newPortion = Math.floor((newLeft / 389) * 100);
+      let newPortion = Math.floor((newLeft / 388) * 100);
       setPortion(newPortion);
     }
 
@@ -55,9 +55,17 @@ export function Slider() {
   };
 
   const moveDot = (value) => {
+    let condition = value;
+    if (value === 100) {
+      value = 97;
+    }
+
+    if (value === 1) {
+      value = 0;
+    }
     pointerLocation.current.style.left = (400 * value) / 100 + "px";
     coralBar.current.style.width = (400 * value) / 100 + "px";
-    setPortion(value);
+    setPortion(condition);
   };
 
   return (
@@ -83,11 +91,11 @@ export function Slider() {
         />
       </UnderlineBarContainer>
       <PortionButtonContainer>
-        <Btn onClick={() => moveDot(0)}>1%</Btn>
+        <Btn onClick={() => moveDot(1)}>1%</Btn>
         <Btn1 onClick={() => moveDot(25)}>25%</Btn1>
         <Btn2 onClick={() => moveDot(50)}>50%</Btn2>
         <Btn3 onClick={() => moveDot(75)}>75%</Btn3>
-        <Btn4 onClick={() => moveDot(97)}>100%</Btn4>
+        <Btn4 onClick={() => moveDot(100)}>100%</Btn4>
       </PortionButtonContainer>
     </SliderContainer>
   );

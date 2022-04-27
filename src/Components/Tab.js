@@ -67,4 +67,5 @@ const Underline = styled.div`
   width: 180px;
   border: 1px solid coral;
   transition: 0.5s;
+  background: coral;
 `;
